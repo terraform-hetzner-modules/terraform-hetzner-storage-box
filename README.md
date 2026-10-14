@@ -20,25 +20,20 @@ A [Terraform module][module] to manage a [Hetzner Storage Box][hetzner], its sub
 ## ✨ TL;DR
 
 ```hcl
+variable "storage_box_password" {
+  type      = string
+  sensitive = true
+}
+
 module "storage_box" {
   source = "terraform-hetzner-modules/storage-box/hetzner"
 
-  name     = "backups"
+  name     = "archives"
   type     = "bx21"
   password = var.storage_box_password
   access_settings = {
     ssh_enabled          = true
     reachable_externally = true
-  }
-  subaccounts = {
-    backups = {
-      home_directory = "backups"
-      password       = var.backups_password
-      access_settings = {
-        ssh_enabled          = true
-        reachable_externally = true
-      }
-    }
   }
 }
 ```
