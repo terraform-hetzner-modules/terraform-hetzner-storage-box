@@ -31,7 +31,7 @@ jobs:
           - engine: terraform
             version: 1.16.6
           - engine: tofu
-            version: 1.8.8
+            version: 1.11.14 # Older mock engines crash on a null snapshot_plan object.
           - engine: tofu
             version: 1.13.1
     steps:
