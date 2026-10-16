@@ -4,8 +4,7 @@ Manage a Storage Box, subaccounts, access settings, and automatic snapshots. A s
 
 ## Usage
 
-Copy this configuration into `main.tf` and add the
-[provider configuration](#provider-configuration) below in `versions.tf`.
+Copy this configuration into `main.tf`.
 
 ```hcl
 variable "storage_box_password" {
@@ -28,28 +27,6 @@ module "storage_box" {
 
 Supply `storage_box_password` through a sensitive variable or your secret-management system.
 The module outputs the connection hostname as `server` and account name as `username`.
-
-## Provider configuration
-
-Export your Hetzner API token as `HCLOUD_TOKEN`. Put the following in your calling root's `versions.tf`:
-
-```hcl
-terraform {
-  required_version = ">= 1.7"
-  required_providers {
-    hcloud = {
-      source  = "hetznercloud/hcloud"
-      version = "~> 1.70"
-    }
-  }
-}
-
-provider "hcloud" {}
-```
-
-With both files in place, run `terraform init`, `terraform plan`, and `terraform apply`.
-Credentials and provider configuration belong in the calling root.
-Terraform >= 1.7 and OpenTofu >= 1.11 are supported.
 
 ## Examples
 
